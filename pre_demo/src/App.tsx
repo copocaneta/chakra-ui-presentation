@@ -1,38 +1,37 @@
-import * as React from "react"
+import React from "react"
 import {
   ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
   theme,
 } from "@chakra-ui/react"
-import { ColorModeSwitcher } from "./ColorModeSwitcher"
-import { Logo } from "./Logo"
+import Layout from "./Layout"
+
+if (typeof document === 'undefined') {
+    React.useLayoutEffect = React.useEffect;
+}
+
+const customTheme = {
+    ...theme,
+    colors: {
+        ...theme.colors,
+        'flex-pagebg': '#E5E5E5',
+        'flex-searchicon': '#747681',
+        'flex-green': '#19AB6A',
+        'flex-grey': '#EAEAEA',
+        'flex-lightgrey': '#F4F4F6'
+    },
+    styles: {
+        global: {
+          'html, body': {
+            // color: 'gray.600',
+            // lineHeight: 'tall',
+            bg: 'white'
+          }
+        },
+    }
+}
 
 export const App = () => (
-  <ChakraProvider theme={theme}>
-    <Box textAlign="center" fontSize="xl">
-      <Grid minH="100vh" p={3}>
-        <ColorModeSwitcher justifySelf="flex-end" />
-        <VStack spacing={8}>
-          <Logo h="40vmin" pointerEvents="none" />
-          <Text>
-            Edit <Code fontSize="xl">src/App.tsx</Code> and save to reload.
-          </Text>
-          <Link
-            color="teal.500"
-            href="https://chakra-ui.com"
-            fontSize="2xl"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn Chakra
-          </Link>
-        </VStack>
-      </Grid>
-    </Box>
+  <ChakraProvider theme={customTheme}>
+      <Layout/>
   </ChakraProvider>
 )
