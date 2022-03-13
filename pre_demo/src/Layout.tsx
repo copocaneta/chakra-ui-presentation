@@ -1,4 +1,4 @@
-import { Container } from '@chakra-ui/layout'
+import { Container } from '@chakra-ui/react'
 import React from 'react'
 
 const Layout: React.FC = () => {
